@@ -1,3 +1,13 @@
+---
+title: Get Unit Cell
+description: Program that finds smaller unit cells.
+author: Xabier M. Aretxabaleta
+created:  2017 Oct 19
+Last update: 2017 Oct 19
+
+---
+
+
 # Get Unit Cell
 
 This program finds a smaller unit cell from a structure in a supercell. It is very usefull to use it with structures predicted with evolutionary algorithms.
