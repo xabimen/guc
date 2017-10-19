@@ -37,4 +37,4 @@ Executing
 
 To execute the program use the following command:
 
-	$ ./guc [input file name] [number of different types of atoms] [tolerance]
+	$ ./guc *[input file name] [number of different types of atoms] [tolerance]*
