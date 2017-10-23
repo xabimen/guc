@@ -26,7 +26,6 @@ do i = 1, n_atoms8(1)
 	do j = 2, size(n_atoms8) - 1
 
 		do k = sum(n_atoms8(1:j-1)) + 1, sum(n_atoms8(1:j))
-
 			if (all(coor8(k,:) > coor8(i,:)-tol .and. &
 				coor8(k,:) < coor8(i,:)+tol)) then
 				!found(j) = .true.

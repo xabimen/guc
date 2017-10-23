@@ -71,7 +71,7 @@ call read_data_file(file_name,n_elements,cell,names,n_atoms,coor)
 !print*,
 
 call distf1(n_elements,n_atoms,coor,coorref)
-
+!print*, "COORREF"
 !do i = 1, sum(n_atoms)
 !    print*, coorref(i,:)
 !enddo
@@ -101,15 +101,12 @@ do i1 = 2, size(inter_vec,1)
             a = inter_vec(i1,:)
             b = inter_vec(i2,:)
             c = inter_vec(i3,:)
-            if (dist(i1) < maxval(norm2(cell,1))/2.0d0) then
-                call check_angles(cell,a,b,c,angles)
-                if (angles) then 
-                    loc(j,:) = (/i1,i2,i3/)
-                    fit(j) = norm2(a)*norm2(b)*norm2(c)
-                    j = j + 1
-                endif
+            call check_angles(cell,a,b,c,angles)
+            if (angles) then 
+                loc(j,:) = (/i1,i2,i3/)
+                fit(j) = abs(dot_product(a,cross_product(b,c)))
+                j = j + 1
             endif
-
         enddo
     enddo
 enddo
@@ -133,6 +130,7 @@ do i = 1, 100
     print*, "a", inter_vec(i1,:),"norm-> ", norm2(newcell(1,:))
     print*, "b", inter_vec(i2,:), "norm-> ", norm2(newcell(2,:))
     print*, "c", inter_vec(i3,:), "norm-> ", norm2(newcell(3,:))
+    print*, "volume", dot_product(a2,cross_product(b2,c2))
 
     !print*, "theta", theta
     !norm = cross_product(a2,b2)
@@ -142,6 +140,7 @@ do i = 1, 100
     !print*, "alpha", alpha
 
     call check_cell(newcell,cell,coor,n_atoms,unit_cell,coor_barne,n_atoms_barne)
+
 
     if (unit_cell) then
         print*, "Translational symmetry found"

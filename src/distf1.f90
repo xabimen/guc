@@ -21,8 +21,7 @@ allocate(coorref(sum(n_atoms),3))
 
 
 do i = 1, n
-	ref = coor(n_atoms(i-1)+1,:)
-
+	ref = coor(sum(n_atoms(1:i-1))+1,:)    
 	do j = sum(n_atoms(1:i-1)) + 1, sum(n_atoms(1:i))
 		coorref(j,:) = modulo(coor(j,:) - ref,1.0d0)
 	enddo
