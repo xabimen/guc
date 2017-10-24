@@ -130,7 +130,7 @@ do i = 1, 100
     print*, "a", inter_vec(i1,:),"norm-> ", norm2(newcell(1,:))
     print*, "b", inter_vec(i2,:), "norm-> ", norm2(newcell(2,:))
     print*, "c", inter_vec(i3,:), "norm-> ", norm2(newcell(3,:))
-    print*, "volume", dot_product(a2,cross_product(b2,c2))
+    print*, "volume", abs(dot_product(a2,cross_product(b2,c2)))
 
     !print*, "theta", theta
     !norm = cross_product(a2,b2)
