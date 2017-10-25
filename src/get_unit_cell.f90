@@ -166,5 +166,5 @@ enddo
 
 print*, 
 print*, 
-print*, Report bugs to xabier.mendez@ehu.eus
+print*, "Report bugs to xabier.mendez@ehu.eus"
 end program
