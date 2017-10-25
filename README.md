@@ -46,6 +46,6 @@ There are some tests in the repository so that you can try the program. For exam
 Input file
 ----------
 
-The input file should be a Vasp input file in fractional coordinates. More input files formats could be implemented to the code. 
+The input file should be a Vasp input file in fractional coordinates. More input files formats could be implemented in the code. 
 	
 #### *Report Bugs to xabier.mendez@ehu.eus*
