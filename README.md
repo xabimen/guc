@@ -38,3 +38,5 @@ Executing
 To execute the program use the following command:
 
 	$ ./guc [input file name] [number of different types of atoms] [tolerance]
+	
+#### *Report Bugs to xabierm.mendez@ehu.eus*
