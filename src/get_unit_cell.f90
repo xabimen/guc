@@ -164,4 +164,7 @@ do i = 1, 100
     endif
 enddo
 
+print*, 
+print*, 
+print*, Report bugs to xabier.mendez@ehu.eus
 end program
