@@ -39,4 +39,13 @@ To execute the program use the following command:
 
 	$ ./guc [input file name] [number of different types of atoms] [tolerance]
 	
+There are some tests in the repository so that you can try the program. For example:
+
+	$ ./guc test1.vasp 2 0.001
+	
+Input file
+----------
+
+The input file should be a Vasp input file in fractional coordinates. More input files formats could be implemented to the code. 
+	
 #### *Report Bugs to xabier.mendez@ehu.eus*
