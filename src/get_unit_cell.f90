@@ -1,12 +1,11 @@
-!print*, "**************************************"
-!print*, "**                                  **"
-!print*, "**            GET UNIT CELL         **"
-!print*, "**                                  **"
-!print*, "**    Xabier M. Aretxabaleta        **"
-!print*, "**                                  **"
-!print*, "**************************************"
-
-
+!print*, "********************************************************************"
+!print*, "**                                                                **"
+!print*, "**                          GET UNIT CELL                         **"
+!print*, "**                                                                **"
+!print*, "********************************************************************"
+!   
+!                                                       Xabier M. Aretxabaleta
+!                                                                 Bilbao, 2017
 
 program get_unit_cell
 
@@ -27,7 +26,7 @@ implicit none
 !******************************************************
 integer                                         :: n_elements, i, i1, i2, i3, j
 integer, dimension(1)                           :: k
-integer, dimension(100000,3)                        :: loc
+integer, dimension(1000000,3)                   :: loc
 integer, dimension(:), allocatable              :: n_atoms, n_atoms8, n_atoms_barne
 real(kind=8), dimension(3,3)                    :: cell, newcell
 real(kind=8), dimension(:,:), allocatable       :: coor, coorref, coor8, coorref8, inter_vec, coor_barne
@@ -42,13 +41,12 @@ real(kind=8), parameter                     :: pi = acos(-1.0d0)
 character(len=10), dimension(2)             :: arg
 !******************************************************
 
-print*, "**************************************"
-print*, "**                                  **"
-print*, "**         GET UNIT CELL            **"
-print*, "**                                  **"
-print*, "**     Xabier M. Aretxabaleta       **"
-print*, "**                                  **"
-print*, "**************************************"
+print*, "********************************************************************"
+print*, "**                                                                **"
+print*, "**                          GET UNIT CELL                         **"
+print*, "**                                                                **"
+print*, "********************************************************************"
+print*, 
 
 
 call get_command_argument(1,file_name)
@@ -56,8 +54,11 @@ call get_command_argument(2,arg(1))
 call get_command_argument(3,arg(2))
 read(arg(1),fmt=*) n_elements
 read(arg(2), fmt=*) tol
+
 print*, "number of elemets", n_elements
 print*, "tolerance", tol
+print*,
+
 allocate(n_atoms(0:n_elements),n_atoms8(0:n_elements), names(n_elements))
 !n_atoms bektorea 0-tik definituta dago holan gero iteratzeko
 !orduan errezago izan dadin.
@@ -106,6 +107,11 @@ do i1 = 2, size(inter_vec,1)
                 loc(j,:) = (/i1,i2,i3/)
                 fit(j) = abs(dot_product(a,cross_product(b,c)))
                 j = j + 1
+                if (j > 100000) then
+                    print*, "ERROR: Too many possible unit cells. Reduce the &
+                            tolerance"
+                    stop
+                endif
             endif
         enddo
     enddo
@@ -144,6 +150,7 @@ do i = 1, 100
 
     if (unit_cell) then
         print*, "Translational symmetry found"
+        print*, 
         print*, "Output in file 'output.vasp'"
         call write_output_vasp(newcell,coor_barne,n_atoms_barne,names)
         exit

@@ -46,7 +46,7 @@ call inverse(newcell,newcell_inv,3)
 
 call barruan(n_atoms8,coor8,newcell_inv,tol,n_atoms_barne,coor_barne)
 
-!print*, "barruan"
+print*, "Atoms inside cell -> ", n_atoms_barne(1:)
 !print*, n_atoms_barne
 !do i = 1, sum(n_atoms_barne)
 !    print*, coor_barne(i,:)
